@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GO. — AI for leaving the screen</title>
+
+    <meta name="description"
+        content="GO. creates offline activities that deliberately require you to put your phone away." />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">GO.</div>
+
+        <div class="topbar-note">
+            AI for leaving the screen.
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">TOUCH GRASS / 001</p>
+
+                <h1>
+                    Ask AI.<br />
+                    <span>Then leave.</span>
+                </h1>
+
+                <p class="hero-text">
+                    GO. creates small real-world missions designed to
+                    make you put your phone away and actually do something.
+                </p>
+            </div>
+
+            <div class="hero-stamp">
+                <span>NO FEED</span>
+                <span>NO SCROLL</span>
+                <span>JUST GO.</span>
+            </div>
+        </section>
+
+        <!-- MISSION BUILDER -->
+        <section class="builder section-card">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MISSION BUILDER</p>
+                    <h2>What do you feel like doing?</h2>
+                </div>
+
+                <span class="step-number">01</span>
+            </div>
+
+            <!-- VIBES -->
+            <div class="field">
+                <label>Vibe</label>
+
+                <div class="choices" id="vibeChoices">
+                    <button class="choice active" data-vibe="Explore">
+                        Explore
+                    </button>
+
+                    <button class="choice" data-vibe="Move">
+                        Move
+                    </button>
+
+                    <button class="choice" data-vibe="Create">
+                        Create
+                    </button>
+
+                    <button class="choice" data-vibe="Notice">
+                        Notice
+                    </button>
+
+                    <button class="choice" data-vibe="Connect">
+                        Connect
+                    </button>
+
+                    <button class="choice" data-vibe="Calm">
+                        Calm
+                    </button>
+                </div>
+            </div>
+
+            <!-- DURATION -->
+            <div class="field">
+                <label for="duration">How much time?</label>
+
+                <select id="duration">
+                    <option value="10">10 minutes</option>
+                    <option value="20" selected>20 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                </select>
+            </div>
+
+            <!-- COMPANY -->
+            <div class="field">
+                <label for="company">Going with</label>
+
+                <select id="company">
+                    <option value="solo" selected>Just me</option>
+                    <option value="friend">A friend</option>
+                    <option value="family">Family</option>
+                    <option value="group">A small group</option>
+                </select>
+            </div>
+
+            <!-- PLACE -->
+            <div class="field">
+                <label for="place">Where?</label>
+
+                <select id="place">
+                    <option value="nearby" selected>Somewhere nearby</option>
+                    <option value="park">A park / green space</option>
+                    <option value="neighborhood">My neighborhood</option>
+                    <option value="campus">Campus</option>
+                    <option value="home">Around home</option>
+                </select>
+            </div>
+
+            <!-- EXTRA -->
+            <div class="field">
+                <label for="extra">
+                    Anything else?
+                    <span>optional</span>
+                </label>
+
+                <input id="extra" type="text" maxlength="120" placeholder="e.g. I don't want to spend money" />
+            </div>
+
+            <button id="createBtn" class="primary-button">
+                <span>CREATE MY MISSION</span>
+                <span>→</span>
+            </button>
+
+            <p class="builder-note">
+                Demo mode works completely offline.
+                Connect an open-weight model later for real AI generation.
+            </p>
+        </section>
+
+        <!-- MISSION -->
+        <section id="missionSection" class="mission-section hidden">
+            <div class="mission-top">
+                <div>
+                    <p class="eyebrow">YOUR MISSION</p>
+                    <h2 id="missionTitle">Mission</h2>
+                </div>
+
+                <div id="missionBadge" class="mission-badge">
+                    GO.
+                </div>
+            </div>
+
+            <div class="mission-layout">
+                <article class="mission-card">
+                    <div class="mission-card-top">
+                        <span id="missionVibe">EXPLORE</span>
+                        <span id="missionDuration">20 MIN</span>
+                    </div>
+
+                    <p id="missionDescription" class="mission-description">
+                        Your mission will appear here.
+                    </p>
+
+                    <div class="mission-steps">
+                        <h3>DO THIS</h3>
+
+                        <ol id="missionSteps"></ol>
+                    </div>
+
+                    <div class="mission-rule">
+                        <span>THE RULE</span>
+
+                        <strong id="missionRule">
+                            Your phone stays in your pocket.
+                        </strong>
+                    </div>
+                </article>
+
+                <aside class="lock-card">
+                    <div class="lock-icon">◌</div>
+
+                    <p class="eyebrow">SCREEN-OFF MODE</p>
+
+                    <h3>
+                        Ready to<br />
+                        disappear?
+                    </h3>
+
+                    <p>
+                        Put your phone somewhere you cannot casually
+                        reach it.
+                    </p>
+
+                    <button id="lockBtn" class="dark-button">
+                        START 10-SECOND COUNTDOWN
+                    </button>
+
+                    <div id="countdown" class="countdown">
+                        10
+                    </div>
+
+                    <p id="countdownMessage" class="countdown-message">
+                        The countdown starts when you press the button.
+                    </p>
+
+                    <button id="completeBtn" class="complete-button" disabled>
+                        MARK MISSION COMPLETE
+                    </button>
+                </aside>
+            </div>
+
+            <button id="newMissionBtn" class="secondary-button">
+                ← MAKE ANOTHER MISSION
+            </button>
+        </section>
+
+        <!-- PHILOSOPHY -->
+        <section class="philosophy">
+            <p class="eyebrow">THE IDEA</p>
+
+            <h2>
+                An AI that<br />
+                wants you to<br />
+                <span>stop using it.</span>
+            </h2>
+
+            <p>
+                Most technology is designed to keep your attention.
+                GO. does the opposite. It uses AI for a few seconds,
+                gives you something worth doing, and then gets out
+                of your way.
+            </p>
+        </section>
+
+        <!-- SAFETY -->
+        <section class="safety">
+            <div class="safety-icon">!</div>
+
+            <div>
+                <h3>Stay sensible.</h3>
+
+                <p>
+                    Stay in public or familiar places. Follow local
+                    rules. Don't enter restricted areas, approach
+                    wildlife, climb unsafe structures, or do anything
+                    that could put you or someone else at risk.
+                </p>
+            </div>
+        </section>
+
+        <!-- HISTORY -->
+        <section class="history">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR TRAIL</p>
+                    <h2>Past missions</h2>
+                </div>
+
+                <button id="clearHistoryBtn" class="text-button">
+                    Clear
+                </button>
+            </div>
+
+            <div id="historyList" class="history-list">
+                <div class="empty-history">
+                    No missions yet.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="brand">GO.</div>
+
+        <p>
+            AI for leaving the screen.
+        </p>
+
+        <span>
+            Built for Touch Grass.
+        </span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
